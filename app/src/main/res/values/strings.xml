@@ -8,6 +8,9 @@
     <string name="title_rank">Ranking</string>
     <string name="title_activity_check">CheckActivity</string>
     <string name="check_main">Fake zweryfikowany</string>
+    <string name="check_address">URL Of the Site</string>
+    <string name="check_reason_title">Powód :</string>
+    <string name="check_reason_text">Reason of Report</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
