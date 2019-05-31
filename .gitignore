@@ -42,3 +42,9 @@ Thumbs.db
 \.idea/
 
 build/
+
+app/src/main/gen/com/example/proovit/BuildConfig\.java
+
+app/src/main/gen/com/example/proovit/Manifest\.java
+
+app/src/main/gen/com/example/proovit/R\.java
