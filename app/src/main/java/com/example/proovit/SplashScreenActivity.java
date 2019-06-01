@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.proovit.logic.ReportFakeActivity;
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
@@ -19,7 +21,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(getApplicationContext(),
-                        MainActivity.class);
+                        ReportFakeActivity.class);
                 startActivity(intent);
                 finish();
             }
