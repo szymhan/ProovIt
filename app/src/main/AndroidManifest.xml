@@ -16,28 +16,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".logic.ReportFakeActivity"></activity>
-        <service android:name=".service.MyAccessbilityService"
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".logic.ReportFakeActivity" />
+
+        <service
+            android:name=".service.MyAccessbilityService"
             android:label="@string/accessibility_title"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService"/>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
+
             <meta-data
                 android:name="android.accessibilityservice"
                 android:resource="@xml/accesibility_service_config" />
         </service>
-        <service android:name=".service.CheckService"
-            android:exported="false"/>
+        <service
+            android:name=".service.CheckService"
+            android:exported="false" />
+
         <activity
             android:name=".CheckActivity"
             android:label="@string/title_activity_check"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateUnchanged">
             <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="text/*"/>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/*" />
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />

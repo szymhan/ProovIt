@@ -47,8 +47,13 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         Intent intent = getIntent();
         String target = intent.getStringExtra(TARGET);
-        if (target!=null)
-        initFragment(target);
+        if (target!=null)  {
+            initFragment(target);
+        } else {
+            initFragment(REPORT);
+        }
+
+
 
     }
 

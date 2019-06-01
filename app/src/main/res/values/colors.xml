@@ -2,8 +2,10 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#b2bec3</color>
     <color name="background">#dfe6e9</color>
     <color name="backgroundSplashScreen">#E3E6E7</color>
+    <color name="border_color">#636e72</color>
+    <color name="white">#ffffff</color>
 
 </resources>

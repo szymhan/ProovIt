@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">ProovIt</string>
     <string name="title_home">Home</string>
+    <string name="welcome1">Witaj w aplikacji</string>
+    <string name="welcome2">ProvIt</string>
+    <string name="login_in_please">Zaloguj się</string>
+    <string name="login">nazwa użytkownika :</string>
+    <string name="click">KLIKNIJ</string>
+    <string name="pass">hasło :</string>
     <string name="channel_name">Prove It Channel</string>
     <string name="channel_description">Prove It Description</string>
     <string name="title_dashboard">Dashboard</string>
