@@ -79,14 +79,17 @@ public class CheckActivity extends AppCompatActivity {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Zaplusowno wpis", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Zaplusowano wpis", Toast.LENGTH_LONG).show();
+                onBackPressed();
+
             }
         });
         nook = findViewById(R.id.nook);
         nook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Zaminusowno wpis", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Zaminusowano wpis", Toast.LENGTH_LONG).show();
+                onBackPressed();
             }
         });
     }
