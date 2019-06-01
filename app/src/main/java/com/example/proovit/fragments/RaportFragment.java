@@ -1,6 +1,8 @@
 package com.example.proovit.fragments;
 
 
+import android.annotation.SuppressLint;
+import android.arch.lifecycle.ReportFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proovit.R;
@@ -40,6 +43,8 @@ public class RaportFragment extends Fragment {
     boolean firstTimeClickedReasonEditText;
     boolean firstTimeClickedLinkEditText;
     SharedPreferences preferences;
+    boolean firstTime = true;
+    private String last;
 
     private static final String TAG = "ReportFakeActivity";
 
@@ -49,12 +54,21 @@ public class RaportFragment extends Fragment {
     public static final String TWITTER_PACKAGE_NAME = "com.twitter.android";
     public static final String WHATS_PACKAGE_NAME =  "com.whatsapp";
 
+
+    @SuppressLint("ValidFragment")
+    public RaportFragment(String last) {
+        if (last != null) {
+            last = last;
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_raport, container, false);
         init(view);
+        //preferences.edit().putString("lastSite", "").apply();
         return view;
     }
 
@@ -68,7 +82,19 @@ public class RaportFragment extends Fragment {
         this.whattsappShareButton = view.findViewById(R.id.imageButtonWhatsapp);
         preferences = this.getActivity().getSharedPreferences("com.example.proovit", Context.MODE_PRIVATE);
 
-        if(isAccessedFromBrowser) linkEditText.setFocusable(false); //focus is no longer valid
+        Log.e(TAG, "init: "+preferences.getString("lastSite","") );
+        String link = preferences.getString("lastSite","");
+        Log.e("LINK", link);
+
+        Boolean wasUsed = preferences.getBoolean("used", true);
+        if(wasUsed == false) {
+            linkEditText.setText(link);
+            preferences.edit().putBoolean("wasUsed",true).commit();
+        }
+        else {
+            linkEditText.setText("");
+        }
+         //focus is no longer valid
 
         apiService = ApiClient.getClient().create(APIInterface.class);
         facebookShareButton.setOnClickListener(new View.OnClickListener() {
@@ -104,16 +130,17 @@ public class RaportFragment extends Fragment {
         linkEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(!firstTimeClickedLinkEditText) {
-                    linkEditText.setText("");
+                if(firstTimeClickedReasonEditText) {
+                    //linkEditText.setText("");
                     firstTimeClickedLinkEditText = true;
+                    preferences.edit().putString("lastSite", "").apply();
                 }
             }
         });
         reasonEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(!firstTimeClickedReasonEditText) {
+                if(firstTimeClickedReasonEditText) {
                     firstTimeClickedReasonEditText = true;
                     reasonEditText.setText("");
                 }
@@ -161,6 +188,26 @@ public class RaportFragment extends Fragment {
         }
 
 
+
     }
 
+    @Override
+    public void onDestroyView() {
+        preferences.edit().putString("lastSite", "").commit();
+        linkEditText.setText("");
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        preferences.edit().putString("lastSite", "").commit();
+        linkEditText.setText("");
+        super.onDestroy();
+    }
+
+    @Override
+    public void onPause() {
+        firstTime = false;
+        super.onPause();
+    }
 }
