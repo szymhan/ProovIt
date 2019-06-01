@@ -6,148 +6,36 @@
     >
 
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:background="@drawable/validation"
-            android:scaleType="fitCenter" />
-    </LinearLayout>
-    <LinearLayout
         android:id="@+id/check_linear_image"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp">
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp">
 
         <ImageView
-            android:id="@+id/check_logo"
             android:layout_width="wrap_content"
-            android:layout_height="128dp"
+            android:layout_height="32dp"
             android:adjustViewBounds="true"
-            android:background="@drawable/alarm"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/check_linear_image"
         android:id="@+id/check_linear_main_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/check_linear_image"
         android:orientation="horizontal">
-
+        
         <TextView
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/check_main"
             android:fontFamily="@font/lato_bold"
             android:textSize="32sp"
             />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginTop="40dp"
-        android:layout_below="@id/check_linear_main_text"
-        android:id="@+id/check_linear_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/check_address"
-            android:text="@string/check_address"
-            android:textSize="25sp"
-            android:fontFamily="@font/lato_regular"
-            android:gravity="center"/>
-
-        </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/check_linear_reason_title"
-        android:layout_below="@id/check_linear_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:padding="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/check_reason_title"
-            android:text="@string/check_reason_title"
-            android:textSize="25sp"
-            android:fontFamily="@font/lato_regular"
-            android:gravity="start"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/check_linear_reason_text"
-        android:layout_below="@id/check_linear_reason_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/check_reason_text"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:background="@xml/textview_border"
-            android:fontFamily="@font/lato_regular"
-            android:padding="40dp"
-            android:text="@string/check_reason_text"
-            android:textSize="25sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:id="@+id/check_linear_vote"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@id/check_linear_reason_text"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:adjustViewBounds="true"
-            android:background="@drawable/fakeapproval"
-            android:scaleType="fitCenter" />
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:adjustViewBounds="true"
-            android:background="@drawable/fakedissaproval"
-            android:scaleType="fitCenter" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
     </LinearLayout>
-
 
 
 
