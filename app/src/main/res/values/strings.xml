@@ -36,4 +36,9 @@
     <string name="facebook_app_id">883075032041600</string>
     <string name="fb_login_protocol_scheme">fb883075032041600</string>
 
+    <!--Article API-->
+    <string name="articleAlreadyReported">Artykuł obecny w bazie</string>
+    <string name="articleNotReported">Artykuł nieobecny w bazie</string>
+    <string name="numberOfReports">Liczba zgłoszeń:</string>
+
 </resources>
