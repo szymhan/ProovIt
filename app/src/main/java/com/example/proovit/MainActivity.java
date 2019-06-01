@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.proovit.fragments.RankingFragment;
 import com.example.proovit.fragments.RaportFragment;
 import com.example.proovit.fragments.ReportedFragment;
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.container, new ReportedFragment());
                 break;
             case RANKING:
-              //  ft.replace(R.id.container, new HistoryFragment());
+                ft.replace(R.id.container, new RankingFragment());
                 break;
         }
 

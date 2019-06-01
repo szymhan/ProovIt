@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.proovit.R;
-import com.example.proovit.data.Domain;
+
 
 import java.util.List;
 

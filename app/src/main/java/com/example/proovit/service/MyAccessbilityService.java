@@ -2,11 +2,19 @@ package com.example.proovit.service;
 
 import android.accessibilityservice.AccessibilityService;
 
+import android.graphics.PixelFormat;
+import android.os.Build;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 
 import com.example.proovit.R;
@@ -120,6 +128,7 @@ public class MyAccessbilityService extends AccessibilityService {
     public void onInterrupt() {
 
     }
+
 
     private void runNotification(String description, String textTitle) {
 

@@ -7,7 +7,7 @@
     <dist:module dist:instant="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_logo_round"
@@ -17,7 +17,6 @@
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".logic.ReportFakeActivity" />
 
         <service
             android:name=".service.MyAccessbilityService"
@@ -80,5 +79,7 @@
             </intent-filter>
         </activity>
     </application>
+
+
 
 </manifest>

@@ -40,12 +40,398 @@
             android:src="@drawable/chevron1"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ranking_title"
+        android:layout_below="@id/ranking_top_bar"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="32sp"
+            android:text="@string/rank"/>
+    </LinearLayout>
 
     <LinearLayout
+        android:layout_below="@id/ranking_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:id="@+id/ranking_recycler_view"
+            android:layout_below="@id/ranking_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Nick"
+                android:fontFamily="@font/lato_regular"
+                />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="Punkty"
+                android:fontFamily="@font/lato_bold"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ranking_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Tasebx"
+                android:fontFamily="@font/lato_regular"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="8292"
+                android:fontFamily="@font/lato_bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxHeight="40dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/chevron11"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ranking_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Marika"
+                android:fontFamily="@font/lato_regular"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="6042"
+                android:fontFamily="@font/lato_bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxHeight="40dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/chevron10"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ranking_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Wurpa"
+                android:fontFamily="@font/lato_regular"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="3142"
+                android:fontFamily="@font/lato_bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxHeight="40dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/chevron8"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ranking_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Eksilol"
+                android:fontFamily="@font/lato_regular"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="2933"
+                android:fontFamily="@font/lato_bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxHeight="40dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/chevron6"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ranking_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="ksEniA"
+                android:fontFamily="@font/lato_regular"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="2811"
+                android:fontFamily="@font/lato_bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxHeight="40dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/chevron5"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ranking_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="XXSWE"
+                android:fontFamily="@font/lato_regular"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="2245"
+                android:fontFamily="@font/lato_bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxHeight="40dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/chevron3"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ranking_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Mapelo"
+                android:fontFamily="@font/lato_regular"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="1147"
+                android:fontFamily="@font/lato_bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxHeight="40dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/chevron2"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/ranking_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Tesciow"
+                android:fontFamily="@font/lato_regular"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="202"
+                android:fontFamily="@font/lato_bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxHeight="40dp"
+                    android:layout_marginLeft="2dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/chevron"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
+
+
 
 </RelativeLayout>
