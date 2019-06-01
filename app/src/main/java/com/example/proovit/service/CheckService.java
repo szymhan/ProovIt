@@ -7,9 +7,9 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.example.proovit.CheckActivity;
+import com.example.proovit.MainActivity;
 import com.example.proovit.R;
 import com.example.proovit.data.ArticleCountInDatabase;
-import com.example.proovit.logic.ReportFakeActivity;
 import com.example.proovit.utils.APIInterface;
 import com.example.proovit.utils.ApiClient;
 
@@ -19,9 +19,11 @@ import retrofit2.Response;
 
 public class CheckService extends IntentService {
 
+    private static final String TARGET = "TARGET";
     private final String ADDRESS = "ADDRESS";
     private String receivedAddress;
     private final String CHANNEL_ID = "PROVEIT";
+    private final String REPORT = "Report";
 
     APIInterface apiService;
 
@@ -94,8 +96,10 @@ public class CheckService extends IntentService {
 
             if(enableAddingArticle) {
                 Intent intentReport = new Intent(getApplicationContext(),
-                        ReportFakeActivity.class);
+                        MainActivity.class);
+                intentReport.putExtra(TARGET,REPORT);
                 PendingIntent pendingIntentReport = PendingIntent.getActivity(this, 0, intentReport, 0);
+
 
                 builder.addAction(R.drawable.ic_stat_new, getResources().getString(R.string.report), pendingIntentReport);
             }
