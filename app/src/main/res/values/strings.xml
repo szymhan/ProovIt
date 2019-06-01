@@ -5,7 +5,7 @@
     <string name="channel_description">Prove It Description</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_flag">Zgłoś</string>
+    <string name="title_flag">Raportuj</string>
     <string name="title_flagged">Zgłoszone</string>
     <string name="title_rank">Ranking</string>
     <string name="title_activity_check">Zweryfikuj Fake\'a</string>
@@ -17,11 +17,12 @@
     <string name="accessibility_description">chrome_retriever</string>
     <string name="accessibility_title">my_accessibility</string>
 
+    <string name="report_link">www.placeholder.pl</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="reportedByMe">Zgłoszone przeze mnie</string>
+    <string name="reportedByMe">Zgłoszone przeze mnie :</string>
     <string name="report">Raportuj</string>
-    <string name="reportedByOthers">Zgłoszone przeze innych</string>
+    <string name="reportedByOthers">Zgłoszone przeze innych :</string>
     <string name="whyFake">Dlaczego zgłaszasz?</string>
     <string name="writeReason">Tutaj podaj powód</string>
     <string name="or">lub</string>

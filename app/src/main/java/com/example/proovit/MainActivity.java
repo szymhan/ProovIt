@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (ne){
             case REPORT:
-               // ft.replace(R.id.container,new AlarMeFragment());
+                ft.replace(R.id.container,new RaportFragment());
                 break;
             case REPORTED:
                 ft.replace(R.id.container, new ReportedFragment());
