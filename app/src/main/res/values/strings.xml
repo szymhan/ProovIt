@@ -1,13 +1,21 @@
 <resources>
     <string name="app_name">ProovIt</string>
     <string name="title_home">Home</string>
+    <string name="channel_name">Prove It Channel</string>
+    <string name="channel_description">Prove It Description</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_flag">Zgłoś</string>
     <string name="title_flagged">Zgłoszone</string>
     <string name="title_rank">Ranking</string>
-    <string name="title_activity_check">CheckActivity</string>
+    <string name="title_activity_check">Zweryfikuj Fake\'a</string>
     <string name="check_main">Fake zweryfikowany</string>
+
+    <string name="check_address">URL Of the Site</string>
+    <string name="check_reason_title">Powód :</string>
+    <string name="check_reason_text">Reason of Report</string>
+    <string name="accessibility_description">chrome_retriever</string>
+    <string name="accessibility_title">my_accessibility</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
