@@ -5,7 +5,11 @@ import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.proovit.service.CheckService;
 
@@ -16,6 +20,8 @@ public class CheckActivity extends AppCompatActivity {
     private final String ADDRESS = "ADDRESS";
     TextView address;
     SharedPreferences preferences;
+    TextView checkReason;
+    ImageView ok, nook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,8 @@ public class CheckActivity extends AppCompatActivity {
         Intent receivedIntent = getIntent();
         String receivedAction = receivedIntent.getAction();
         String receivedType = receivedIntent.getType();
+
+
 
         if (receivedAction != null) {
 
@@ -49,6 +57,13 @@ public class CheckActivity extends AppCompatActivity {
         } else {
             setAddress(receivedIntent.getStringExtra(ADDRESS));
         }
+        if(receivedIntent.getExtras().get("url")!=null) {
+            Log.e("!~!", "onCreate: !!!!!!!!!!" );
+            Log.e("testtse", "onCreate: " + receivedIntent.getExtras().get("url") );
+            address.setText((CharSequence) receivedIntent.getExtras().get("url"));
+        }
+
+        checkReason.setText("To fake!");
 
     }
 
@@ -59,6 +74,21 @@ public class CheckActivity extends AppCompatActivity {
 
     private void setAssets() {
         address = findViewById(R.id.check_address);
+        checkReason = findViewById(R.id.check_reason_text);
+        ok = findViewById(R.id.ok);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Zaplusowno wpis", Toast.LENGTH_LONG).show();
+            }
+        });
+        nook = findViewById(R.id.nook);
+        nook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Zaminusowno wpis", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
