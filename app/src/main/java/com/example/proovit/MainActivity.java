@@ -1,6 +1,7 @@
 package com.example.proovit;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private final String REPORTED = "Reported";
     private final String RANKING = "Ranking";
     private static final String TARGET = "TARGET";
+    private String last;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         Intent intent = getIntent();
         String target = intent.getStringExtra(TARGET);
+        last = intent.getStringExtra("last");
         if (target!=null)  {
             initFragment(target);
         } else {
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (ne){
             case REPORT:
-                ft.replace(R.id.container,new RaportFragment());
+                ft.replace(R.id.container,new RaportFragment(last));
                 break;
             case REPORTED:
                 ft.replace(R.id.container, new ReportedFragment());

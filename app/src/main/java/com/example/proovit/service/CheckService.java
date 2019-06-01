@@ -2,9 +2,12 @@ package com.example.proovit.service;
 
 import android.app.IntentService;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.util.Log;
 
 import com.example.proovit.CheckActivity;
 import com.example.proovit.MainActivity;
@@ -18,6 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CheckService extends IntentService {
+    private static final String TAG = "CheckService";
 
     private static final String TARGET = "TARGET";
     private final String ADDRESS = "ADDRESS";
@@ -26,6 +30,7 @@ public class CheckService extends IntentService {
     private final String REPORT = "Report";
 
     APIInterface apiService;
+    SharedPreferences preferences;
 
 
         // Must create a default constructor
@@ -37,6 +42,7 @@ public class CheckService extends IntentService {
         @Override
         public void onCreate() {
             apiService = ApiClient.getClient().create(APIInterface.class);
+            preferences = this.getSharedPreferences("com.example.proovit", Context.MODE_PRIVATE);
             super.onCreate(); // if you override onCreate(), make sure to call super().
             // If a Context object is needed, call getApplicationContext() here.
         }
@@ -45,7 +51,11 @@ public class CheckService extends IntentService {
         protected void onHandleIntent(Intent intent) {
             // This describes what will happen when service is triggered
             receivedAddress = intent.getStringExtra(ADDRESS);
+            preferences.edit().putString("lastSite", receivedAddress).apply();
+            preferences.edit().putBoolean("used",false).commit();
+
             System.out.println(receivedAddress);
+            Log.e(TAG, "onHandleIntent: address"+receivedAddress );
 
             Call<ArticleCountInDatabase> call = apiService.checkNumberOfArticleReports(receivedAddress);
             call.enqueue(new Callback<ArticleCountInDatabase>() {
@@ -95,13 +105,17 @@ public class CheckService extends IntentService {
                     .setAutoCancel(true);
 
             if(enableAddingArticle) {
+
                 Intent intentReport = new Intent(getApplicationContext(),
                         MainActivity.class);
+                //intentReport.putExtra("last", receivedAddress);
                 intentReport.putExtra(TARGET,REPORT);
+
                 PendingIntent pendingIntentReport = PendingIntent.getActivity(this, 0, intentReport, 0);
 
 
                 builder.addAction(R.drawable.ic_stat_new, getResources().getString(R.string.report), pendingIntentReport);
+
             }
 
 

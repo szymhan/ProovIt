@@ -25,4 +25,6 @@ public interface APIInterface {
     Call<UserUUID> loginUser(@Body User user);
     @GET("domain/user")
     Call<List<String>> getDomains(@Query("userUUID") String userUUID);
+    @GET("domain/not-user")
+    Call<List<String>> getAllDomains(@Query("userUUID") String userUUID);
 }
