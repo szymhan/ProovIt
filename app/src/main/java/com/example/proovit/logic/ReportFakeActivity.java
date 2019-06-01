@@ -30,15 +30,15 @@
 //    ImageButton twitterShareButton;
 //    ImageButton whattsappShareButton;
 //
-//    private static final String TAG = "ReportFakeActivity";
+//    private static final Domain TAG = "ReportFakeActivity";
 //
 //    APIInterface apiService;
 //
-//    public static final String FACEBOOK_PACKAGE_NAME = "com.facebook.katana";
-//    public static final String TWITTER_PACKAGE_NAME = "com.twitter.android";
-//    public static final String INSTAGRAM_PACKAGE_NAME = "com.instagram.android";
-//    public static final String PINTEREST_PACKAGE_NAME = "com.pinterest";
-//    public static final String WHATS_PACKAGE_NAME =  "com.whatsapp";
+//    public static final Domain FACEBOOK_PACKAGE_NAME = "com.facebook.katana";
+//    public static final Domain TWITTER_PACKAGE_NAME = "com.twitter.android";
+//    public static final Domain INSTAGRAM_PACKAGE_NAME = "com.instagram.android";
+//    public static final Domain PINTEREST_PACKAGE_NAME = "com.pinterest";
+//    public static final Domain WHATS_PACKAGE_NAME =  "com.whatsapp";
 //
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@
 //        facebookShareButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                String message = R.string.fakeFound + " \n" + linkTextView.getText() + "\n" + reasonEditText.getText();
+//                Domain message = R.string.fakeFound + " \n" + linkTextView.getText() + "\n" + reasonEditText.getText();
 //                shareAppWithSocial(ReportFakeActivity.this, FACEBOOK_PACKAGE_NAME, "Znalezion fałsz!", message, true );
 //            }
 //        });
@@ -68,7 +68,7 @@
 //        whattsappShareButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                String message = R.string.fakeFound + " \n" + linkTextView.getText() + "\n" + reasonEditText.getText();
+//                Domain message = R.string.fakeFound + " \n" + linkTextView.getText() + "\n" + reasonEditText.getText();
 //                shareAppWithSocial(ReportFakeActivity.this, WHATS_PACKAGE_NAME, "Znalezion fałsz!", message, false );
 //            }
 //        });
@@ -76,7 +76,7 @@
 //        twitterShareButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                String message = R.string.fakeFound + " \n" + linkTextView.getText() + "\n" + reasonEditText.getText();
+//                Domain message = R.string.fakeFound + " \n" + linkTextView.getText() + "\n" + reasonEditText.getText();
 //                shareAppWithSocial(ReportFakeActivity.this, TWITTER_PACKAGE_NAME, "Znalezion fałsz!", message, false );
 //            }
 //        });
@@ -84,7 +84,7 @@
 //        reportButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                sendReport(String.valueOf("http://"+linkTextView.getText()), String.valueOf(reasonEditText.getText()));
+//                sendReport(Domain.valueOf("http://"+linkTextView.getText()), Domain.valueOf(reasonEditText.getText()));
 //    }
 //});
 //
@@ -95,7 +95,7 @@
 //
 //    }
 //
-//    private void sendReport(String link, final String reason) {
+//    private void sendReport(Domain link, final Domain reason) {
 //        Article article = new Article("2a3e4161-7b1b-4917-aa68-08599c74ad4b", link, reason );
 //        Call<Article> call = apiService.reportArticle(article);
 //
@@ -114,14 +114,14 @@
 //
 //    }
 //
-//    public void shareAppWithSocial(Context context, String application, String title,
-//                                          String description, boolean fb) {
+//    public void shareAppWithSocial(Context context, Domain application, Domain title,
+//                                          Domain description, boolean fb) {
 //
 //        Intent intent = new Intent();
 //        intent.setAction(Intent.ACTION_SEND);
 //        intent.setPackage(application);
 //
-//        intent.putExtra(Intent.EXTRA_STREAM, String.valueOf(linkTextView.getText()));
+//        intent.putExtra(Intent.EXTRA_STREAM, Domain.valueOf(linkTextView.getText()));
 //        intent.putExtra(Intent.EXTRA_TEXT, description);
 //        intent.setType("text/plain");
 //
