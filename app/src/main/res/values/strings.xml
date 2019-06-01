@@ -8,24 +8,12 @@
     <string name="title_rank">Ranking</string>
     <string name="title_activity_check">CheckActivity</string>
     <string name="check_main">Fake zweryfikowany</string>
+    <string name="check_address">URL Of the Site</string>
+    <string name="check_reason_title">Powód :</string>
+    <string name="check_reason_text">Reason of Report</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="reportedByMe">Zgłoszone przeze mnie</string>
-    <string name="report">Raportuj</string>
     <string name="reportedByOthers">Zgłoszone przeze innych</string>
-    <string name="whyFake">Dlaczego zgłaszasz?</string>
-    <string name="writeReason">Tutaj podaj powód</string>
-    <string name="or">lub</string>
-    <string name="link">Link</string>
-
-
-    <string name="shareOnFacebook">Podziel się na FB</string>
-    <string name="fakeFound">Znalazłem nieprawdziwą informację!</string>
-
-
-    <!--Facebook-->
-    <string name="facebook_app_id">883075032041600</string>
-    <string name="fb_login_protocol_scheme">fb883075032041600</string>
-
 </resources>
