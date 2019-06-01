@@ -5,22 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundSplashScreen"
-    tools:context=".logic.ReportFakeActivity">
+    >
 
     <RelativeLayout
         android:id="@+id/report_linear_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <ImageButton
-            android:id="@+id/report_imageButton"
-            android:layout_width="53dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/backgroundSplashScreen"
-            android:scaleType="fitXY"
-            android:src="@drawable/validation"/>
+
         <ImageButton
             android:id="@+id/report_user_button"
             android:layout_width="53dp"
@@ -77,10 +69,11 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_gravity="center_horizontal"
-            app:srcCompat="@drawable/truefalse" />
+            app:srcCompat="@drawable/validation" />
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="15dp"
         android:id="@+id/check_linear_why_reporting"
         android:layout_below="@id/report_linear_validation"
         android:layout_width="match_parent"

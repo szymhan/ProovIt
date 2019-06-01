@@ -2,6 +2,7 @@ package com.example.proovit.utils;
 
 import com.example.proovit.data.Article;
 import com.example.proovit.data.ArticleCountInDatabase;
+import com.example.proovit.data.DomainCountInDatabase;
 import com.example.proovit.data.User;
 import com.example.proovit.data.UserUUID;
 
@@ -20,4 +21,6 @@ public interface APIInterface {
     Call<ArticleCountInDatabase> checkNumberOfArticleReports(@Query("link") String address);
     @POST("users/login")
     Call<UserUUID> loginUser(@Body User user);
+    @GET("domain/score")
+    Call<DomainCountInDatabase> checkDomain(@Query("address") String address);
 }

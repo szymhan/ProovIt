@@ -1,4 +1,4 @@
-package com.example.proovit;
+package com.example.proovit.fragments;
 
 
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.proovit.R;
 import com.example.proovit.data.Article;
 import com.example.proovit.utils.APIInterface;
 import com.example.proovit.utils.ApiClient;
