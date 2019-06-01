@@ -100,7 +100,7 @@ public class RaportFragment extends Fragment {
         facebookShareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = R.string.fakeFound + " \n" + linkEditText.getText() + "\n" + reasonEditText.getText();
+                String message = getResources().getString(R.string.fakeFound) + " \n" + linkEditText.getText() + "\n" + reasonEditText.getText();
                 shareAppWithSocial(getContext(), FACEBOOK_PACKAGE_NAME, "Znalezion fałsz!", message, true );
             }
         });
@@ -108,7 +108,7 @@ public class RaportFragment extends Fragment {
         whattsappShareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = R.string.fakeFound + " \n" + linkEditText.getText() + "\n" + reasonEditText.getText();
+                String message = getResources().getString(R.string.fakeFound) +  " \n" + linkEditText.getText() + "\n" + reasonEditText.getText();
                 shareAppWithSocial(getContext(), WHATS_PACKAGE_NAME, "Znalezion fałsz!", message, false );
             }
         });
@@ -116,15 +116,15 @@ public class RaportFragment extends Fragment {
         twitterShareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = R.string.fakeFound + " \n" + linkEditText.getText() + "\n" + reasonEditText.getText();
-                shareAppWithSocial(getContext(), TWITTER_PACKAGE_NAME, "Znalezion fałsz!", message, false );
+                String message = getResources().getString(R.string.fakeFound) + " \n" + linkEditText.getText() + "\n" + reasonEditText.getText();
+                shareAppWithSocial(getContext(), TWITTER_PACKAGE_NAME, "Uwaga!!\n", message, false );
             }
         });
 
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendReport(String.valueOf("http://"+linkEditText.getText()), String.valueOf(reasonEditText.getText()));
+                sendReport(String.valueOf(linkEditText.getText()), String.valueOf(reasonEditText.getText()));
             }
         });
         linkEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -140,7 +140,7 @@ public class RaportFragment extends Fragment {
         reasonEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(firstTimeClickedReasonEditText) {
+                if(!firstTimeClickedReasonEditText) {
                     firstTimeClickedReasonEditText = true;
                     reasonEditText.setText("");
                 }
@@ -175,8 +175,8 @@ public class RaportFragment extends Fragment {
         intent.setAction(Intent.ACTION_SEND);
         intent.setPackage(application);
 
-        intent.putExtra(Intent.EXTRA_STREAM, String.valueOf(linkEditText.getText()));
-        intent.putExtra(Intent.EXTRA_TEXT, description);
+        if(!fb) intent.putExtra(Intent.EXTRA_STREAM, String.valueOf(linkEditText.getText()));
+        intent.putExtra(Intent.EXTRA_TEXT, "\n"+title + "\n"+description);
         intent.setType("text/plain");
 
         try {
