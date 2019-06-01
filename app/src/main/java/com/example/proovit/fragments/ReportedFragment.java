@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proovit.CheckActivity;
 import com.example.proovit.LoginActivity;
 import com.example.proovit.MainActivity;
 import com.example.proovit.R;
@@ -71,7 +72,9 @@ public class ReportedFragment extends Fragment implements RecyclerViewMyReported
                 adapter.setClickListener(new RecyclerViewMyReportedAdapter.ItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-
+                        Intent i = new Intent(getContext(), CheckActivity.class);
+                        i.putExtra("url", runList.get(position));
+                        startActivity(i);
                     }
                 });
                 mRecyclerView.setAdapter(adapter);
@@ -101,7 +104,9 @@ public class ReportedFragment extends Fragment implements RecyclerViewMyReported
                 adapter2.setClickListener(new RecyclerViewAdapterAll.ItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-
+                        Intent i = new Intent(getContext(), CheckActivity.class);
+                        i.putExtra("url", runList2.get(position));
+                        startActivity(i);
                     }
                 });
                 mRecyclerView2.setAdapter(adapter2);
@@ -138,6 +143,8 @@ public class ReportedFragment extends Fragment implements RecyclerViewMyReported
 
     @Override
     public void onItemClick(View view, int position) {
+        Intent i = new Intent(getContext(), CheckActivity.class);
+        startActivity(i);
 
     }
 }

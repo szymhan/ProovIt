@@ -57,7 +57,7 @@
             android:gravity="center"
             android:text="@string/check_address"
 
-            android:textSize="15sp" />
+            android:textSize="24sp" />
 
         </LinearLayout>
 
@@ -112,6 +112,7 @@
             android:layout_weight="1" />
 
         <ImageButton
+            android:id="@+id/ok"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
@@ -124,6 +125,7 @@
             android:layout_weight="1" />
 
         <ImageButton
+            android:id="@+id/nook"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
