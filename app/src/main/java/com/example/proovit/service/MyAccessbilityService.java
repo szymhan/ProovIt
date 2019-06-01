@@ -2,21 +2,30 @@ package com.example.proovit.service;
 
 import android.accessibilityservice.AccessibilityService;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.example.proovit.MainActivity;
 import com.example.proovit.R;
 import com.example.proovit.data.DomainCountInDatabase;
 import com.example.proovit.utils.APIInterface;
@@ -72,6 +81,7 @@ public class MyAccessbilityService extends AccessibilityService {
                         lastAddress = domain;
                         //TODO: TUTAJ OBSŁUGUJEMY POSTA ZE SPRAWDZENIEM
                         sendReport(domain);
+
                         return;
                     }
                 }
@@ -107,6 +117,8 @@ public class MyAccessbilityService extends AccessibilityService {
                 String notificationText = setNotificationText("Uwaga, ta domena została zgłoszona "
                         + String.valueOf(count.getCount()) + " razy.");
                 runNotification(notificationText, notificationTitle);
+                String not = "Uwaga, zagrożenie Fake Newsem!";
+                showPopUp(not);
             }
 
             @Override
@@ -119,6 +131,17 @@ public class MyAccessbilityService extends AccessibilityService {
         });
 
     }
+
+    private void showPopUp(String text) {
+        Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+        LinearLayout toastContentView = (LinearLayout) toast.getView();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.validation);
+        toastContentView.addView(imageView, 0);
+        toast.setGravity(Gravity.TOP, 0,150);
+        toast.show();
+    }
+
 
     private static void debug(Object object) {
         Log.d(TAG, object.toString());
