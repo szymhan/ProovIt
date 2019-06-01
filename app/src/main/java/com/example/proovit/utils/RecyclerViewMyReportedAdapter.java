@@ -12,13 +12,13 @@ import com.example.proovit.data.Domain;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewMyReportedAdapter extends RecyclerView.Adapter<RecyclerViewMyReportedAdapter.ViewHolder> {
 
     private LayoutInflater mInflater;
-    private RecyclerViewAdapter.ItemClickListener mClickListener;
+    private RecyclerViewMyReportedAdapter.ItemClickListener mClickListener;
     private List<String> reportedSitesList;
 
-    RecyclerViewAdapter(Context context, List<String> data) {
+    public RecyclerViewMyReportedAdapter(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.reportedSitesList = data;
     }
@@ -63,7 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return reportedSitesList.get(id);
     }
 
-    void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
