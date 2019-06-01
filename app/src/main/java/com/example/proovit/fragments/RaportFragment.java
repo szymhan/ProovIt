@@ -1,8 +1,9 @@
-package com.example.proovit;
+package com.example.proovit.fragments;
 
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.proovit.R;
 import com.example.proovit.data.Article;
 import com.example.proovit.utils.APIInterface;
 import com.example.proovit.utils.ApiClient;
@@ -37,6 +39,7 @@ public class RaportFragment extends Fragment {
     boolean isAccessedFromBrowser = false;
     boolean firstTimeClickedReasonEditText;
     boolean firstTimeClickedLinkEditText;
+    SharedPreferences preferences;
 
     private static final String TAG = "ReportFakeActivity";
 
@@ -63,6 +66,7 @@ public class RaportFragment extends Fragment {
         this.facebookShareButton = view.findViewById(R.id.imageButtonFacebook2);
         this.twitterShareButton = view.findViewById(R.id.imageButtonTwitter);
         this.whattsappShareButton = view.findViewById(R.id.imageButtonWhatsapp);
+        preferences = this.getActivity().getSharedPreferences("com.example.proovit", Context.MODE_PRIVATE);
 
         if(isAccessedFromBrowser) linkEditText.setFocusable(false); //focus is no longer valid
 
@@ -118,7 +122,7 @@ public class RaportFragment extends Fragment {
     }
 
     private void sendReport(String link, final String reason) {
-        Article article = new Article("2a3e4161-7b1b-4917-aa68-08599c74ad4b", link, reason );
+        Article article = new Article(preferences.getString("uuid", ""), link, reason );
         Call<Article> call = apiService.reportArticle(article);
 
         call.enqueue(new Callback<Article>() {
