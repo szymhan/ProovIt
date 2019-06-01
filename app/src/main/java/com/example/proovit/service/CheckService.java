@@ -1,6 +1,7 @@
 package com.example.proovit.service;
 
 import android.app.IntentService;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,8 @@ import com.example.proovit.utils.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class CheckService extends IntentService {
     private static final String TAG = "CheckService";
@@ -113,8 +116,9 @@ public class CheckService extends IntentService {
 
                 PendingIntent pendingIntentReport = PendingIntent.getActivity(this, 0, intentReport, 0);
 
-
+                killNotifications();
                 builder.addAction(R.drawable.ic_stat_new, getResources().getString(R.string.report), pendingIntentReport);
+
 
             }
 
@@ -125,6 +129,11 @@ public class CheckService extends IntentService {
 // notificationId is a unique int for each notification that you must define
             notificationManager.notify(1995, builder.build());
         }
+
+    private void killNotifications() {
+        NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        nMgr.cancelAll();
+    }
 
         private String setNotificationTitle(String title) {
             return title;

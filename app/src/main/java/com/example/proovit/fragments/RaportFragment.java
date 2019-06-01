@@ -93,7 +93,7 @@ public class RaportFragment extends Fragment {
         Boolean wasUsed = preferences.getBoolean("used", true);
         if(wasUsed == false) {
             linkEditText.setText(link);
-            preferences.edit().putBoolean("wasUsed",true).commit();
+            preferences.edit().putBoolean("used",true).commit();
         }
         else {
             linkEditText.setText("");
