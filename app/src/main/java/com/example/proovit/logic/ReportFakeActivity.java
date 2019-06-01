@@ -85,8 +85,8 @@ public class ReportFakeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sendReport(String.valueOf("http://"+linkTextView.getText()), String.valueOf(reasonEditText.getText()));
-            }
-        });
+    }
+});
 
         apiService = ApiClient.getClient().create(APIInterface.class);
 
