@@ -2,17 +2,18 @@ package com.example.proovit;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import com.example.proovit.logic.ReportFakeActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
     private final String CHANNEL_ID = "PROVEIT";
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,20 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         createNotificationChannel();
 
+
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(),
-                        MainActivity.class);
+                Intent intent;
+                if(!checkIfLogged()) {
+                    intent = new Intent(getApplicationContext(),
+                            LoginActivity.class);
+                } else {
+                    intent = new Intent(getApplicationContext(),
+                            MainActivity.class);
+                }
                 startActivity(intent);
                 finish();
             }
@@ -48,5 +57,13 @@ public class SplashScreenActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
 
+    }
+
+    private boolean checkIfLogged() {
+        // xD
+        preferences = this.getSharedPreferences("com.example.proovit", Context.MODE_PRIVATE);
+        String userUUID = preferences.getString("uuid", "");
+        if(!userUUID.equals("")) return true;
+        else return false;
     }
 }

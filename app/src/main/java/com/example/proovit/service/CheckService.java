@@ -7,13 +7,27 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.example.proovit.CheckActivity;
+import com.example.proovit.MainActivity;
 import com.example.proovit.R;
+import com.example.proovit.data.ArticleCountInDatabase;
+import com.example.proovit.utils.APIInterface;
+import com.example.proovit.utils.ApiClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CheckService extends IntentService {
 
+    private static final String TARGET = "TARGET";
     private final String ADDRESS = "ADDRESS";
     private String receivedAddress;
     private final String CHANNEL_ID = "PROVEIT";
+    private final String REPORT = "Report";
+
+    APIInterface apiService;
+
+
         // Must create a default constructor
         public CheckService() {
             // Used to name the worker thread, important only for debugging.
@@ -22,6 +36,7 @@ public class CheckService extends IntentService {
 
         @Override
         public void onCreate() {
+            apiService = ApiClient.getClient().create(APIInterface.class);
             super.onCreate(); // if you override onCreate(), make sure to call super().
             // If a Context object is needed, call getApplicationContext() here.
         }
@@ -31,13 +46,41 @@ public class CheckService extends IntentService {
             // This describes what will happen when service is triggered
             receivedAddress = intent.getStringExtra(ADDRESS);
             System.out.println(receivedAddress);
-            String notificationTitle = setNotificationTitle();
-            String notificationText = setNotificationText();
-            runNotification(notificationText, notificationTitle);
+
+            Call<ArticleCountInDatabase> call = apiService.checkNumberOfArticleReports(receivedAddress);
+            call.enqueue(new Callback<ArticleCountInDatabase>() {
+                String notificationTitle;
+                boolean enableAddingArticle = false;
+                @Override
+                public void onResponse(Call<ArticleCountInDatabase> call, Response<ArticleCountInDatabase> response) {
+                    ArticleCountInDatabase article = response.body();
+                    if(article.getReportCount() == 0) {
+                        enableAddingArticle = true;
+                        notificationTitle = setNotificationTitle(getResources().getString(R.string.articleNotReported));
+
+                    }
+                    else {
+                        notificationTitle = setNotificationTitle(getResources().getString(R.string.articleAlreadyReported));
+                    }
+
+                        String notificationText = setNotificationText(getResources().getString(R.string.numberOfReports) + " " + String.valueOf(article.getReportCount()));
+                    runNotification(notificationText, notificationTitle, enableAddingArticle);
+                }
+
+                @Override
+                public void onFailure(Call<ArticleCountInDatabase> call, Throwable t) {
+                    String notificationTitle = setNotificationTitle("blad");
+                    String notificationText = setNotificationText("blad");
+                    runNotification(notificationText, notificationTitle, enableAddingArticle);
+                }
+            });
+
+
+
 
         }
 
-        private void runNotification(String description, String textTitle) {
+        private void runNotification(String description, String textTitle, boolean enableAddingArticle) {
             Intent intent = new Intent(this, CheckActivity.class);
             intent.putExtra(ADDRESS,receivedAddress);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -51,18 +94,30 @@ public class CheckService extends IntentService {
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setAutoCancel(true);
 
+            if(enableAddingArticle) {
+                Intent intentReport = new Intent(getApplicationContext(),
+                        MainActivity.class);
+                intentReport.putExtra(TARGET,REPORT);
+                PendingIntent pendingIntentReport = PendingIntent.getActivity(this, 0, intentReport, 0);
+
+
+                builder.addAction(R.drawable.ic_stat_new, getResources().getString(R.string.report), pendingIntentReport);
+            }
+
+
+
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
 // notificationId is a unique int for each notification that you must define
             notificationManager.notify(1995, builder.build());
         }
 
-        private String setNotificationTitle() {
-            return "Nazwa Powiadomienia";
+        private String setNotificationTitle(String title) {
+            return title;
         }
 
-        private String setNotificationText() {
-            return "Treść powiadomienia";
+        private String setNotificationText(String text) {
+            return text;
         }
 
 }

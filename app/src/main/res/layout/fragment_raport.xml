@@ -111,13 +111,19 @@
             android:layout_height="wrap_content"
             android:text="@string/link" />
 
-        <TextView
-            android:layout_marginStart="10dp"
-            android:id="@+id/textViewLink"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextLink"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text= "@string/report_link"
-            />
+            android:layout_alignTop="@+id/check_linear_link"
+            android:layout_marginStart="29dp"
+            android:layout_marginEnd="81dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="text"
+            android:text="http://"
+            android:textSize="14sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -161,11 +167,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <Button
-                android:layout_gravity="center_horizontal"
                 android:id="@+id/buttonReport"
                 android:layout_width="wrap_content"
                 android:layout_height="74dp"
+                android:layout_gravity="center_horizontal"
+                android:ellipsize="none"
                 android:fontFamily="@font/lato_bold"
                 android:text="@string/report"
                 android:textAlignment="center" />

@@ -1,5 +1,6 @@
 package com.example.proovit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private final String REPORT = "Report";
     private final String REPORTED = "Reported";
     private final String RANKING = "Ranking";
+    private static final String TARGET = "TARGET";
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,7 +45,15 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        initFragment(REPORT);
+        Intent intent = getIntent();
+        String target = intent.getStringExtra(TARGET);
+        if (target!=null)  {
+            initFragment(target);
+        } else {
+            initFragment(REPORT);
+        }
+
+
 
     }
 
