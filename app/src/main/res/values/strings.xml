@@ -12,7 +12,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="reportedByMe">Zgłoszone przeze mnie</string>
+    <string name="report">Raportuj</string>
     <string name="reportedByOthers">Zgłoszone przeze innych</string>
+    <string name="whyFake">Dlaczego zgłaszasz?</string>
+    <string name="writeReason">Tutaj podaj powód</string>
+    <string name="or">lub</string>
+    <string name="link">Link</string>
+
+
+    <string name="shareOnFacebook">Podziel się na FB</string>
+    <string name="fakeFound">Znalazłem nieprawdziwą informację!</string>
 
 
     <!--Facebook-->
