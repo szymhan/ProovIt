@@ -2,6 +2,7 @@ package com.example.proovit.fragments;
 
 
 import android.annotation.SuppressLint;
+import android.app.NotificationManager;
 import android.arch.lifecycle.ReportFragment;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,8 @@ import com.example.proovit.utils.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**
@@ -125,6 +129,10 @@ public class RaportFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 sendReport(String.valueOf(linkEditText.getText()), String.valueOf(reasonEditText.getText()));
+                linkEditText.getText().clear();
+                reasonEditText.getText().clear();
+               runToast();
+               killNotifications();
             }
         });
         linkEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -146,6 +154,19 @@ public class RaportFragment extends Fragment {
                 }
             }
         });
+    }
+
+    private void runToast() {
+        Toast toast =  Toast.makeText(getApplicationContext(),"Raport wysłany pomyślnie.",Toast.LENGTH_SHORT);
+// Set custom view in toast.
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0,0);
+        toast.show();
+    }
+
+    private void killNotifications() {
+        NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        nMgr.cancelAll();
     }
 
     private void sendReport(String link, final String reason) {
